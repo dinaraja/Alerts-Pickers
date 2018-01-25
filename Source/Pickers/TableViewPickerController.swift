@@ -1,6 +1,6 @@
 import UIKit
 
-extension UIAlertController {
+public extension UIAlertController {
   func addTableViewPicker(type: TableViewPickerController.Kind,
                           dataArray: [PickerInfo],
                           action: TableViewPickerController.Action?) {
@@ -25,7 +25,7 @@ public struct PickerInfo {
   }
 }
 
-final class TableViewPickerController: UIViewController {
+public final class TableViewPickerController: UIViewController {
   struct UI {
     static let rowHeight = CGFloat(50)
   }
@@ -55,14 +55,14 @@ final class TableViewPickerController: UIViewController {
   fileprivate var dataSource: [CellData] = []
 
   // MARK: Initialize
-  required init(type: Kind, dataArray: [PickerInfo], action: Action?) {
+  public required init(type: Kind, dataArray: [PickerInfo], action: Action?) {
     self.type = type
     self.pickerInfoArray = dataArray
     self.action = action
     super.init(nibName: nil, bundle: nil)
   }
 
-  required init?(coder aDecoder: NSCoder) {
+  public required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
@@ -70,11 +70,11 @@ final class TableViewPickerController: UIViewController {
     Log("has deinitialized")
   }
 
-  override func loadView() {
+  override public func loadView() {
     view = tableView
   }
 
-  override func viewDidLoad() {
+  override public func viewDidLoad() {
     super.viewDidLoad()
 
     switch type {
@@ -134,7 +134,7 @@ final class TableViewPickerController: UIViewController {
 
 // MARK: - TableViewDelegate
 extension TableViewPickerController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     dataSource[indexPath.row]
         .action?(tableView.cellForRow(at: indexPath))
   }
@@ -142,15 +142,15 @@ extension TableViewPickerController: UITableViewDelegate {
 
 // MARK: - TableViewDataSource
 extension TableViewPickerController: UITableViewDataSource {
-  func numberOfSections(in tableView: UITableView) -> Int {
+  public func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
 
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return dataSource.count
   }
 
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch type {
       case .title:
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self))!
