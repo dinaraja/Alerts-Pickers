@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F6304B62018C3C7008911F6 /* TableViewPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6304B52018C3C7008911F6 /* TableViewPickerController.swift */; };
 		FA3BB2892008B45600E06F8F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FA3BB2882008B45600E06F8F /* README.md */; };
 		FA3BB2AC2008B46800E06F8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3BB28B2008B46500E06F8F /* Assets.xcassets */; };
 		FA3BB2AD2008B46800E06F8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3BB28C2008B46500E06F8F /* LaunchScreen.storyboard */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8F6304B52018C3C7008911F6 /* TableViewPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPickerController.swift; sourceTree = "<group>"; };
 		FA3BB2732008B41B00E06F8F /* Alerts&Pickers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alerts&Pickers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3BB2822008B41B00E06F8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA3BB2882008B45600E06F8F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				FA3BB2A72008B46800E06F8F /* TwoTextFieldsViewController.swift */,
 				FA3BB2A82008B46800E06F8F /* OneTextFieldViewController.swift */,
 				FABFAA67200C963F00961895 /* ColorPickerViewController.swift */,
+				8F6304B52018C3C7008911F6 /* TableViewPickerController.swift */,
 			);
 			path = Pickers;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				FA3BB2BA2008B46900E06F8F /* UIAlertController+Extensions.swift in Sources */,
 				FA3BB2C22008B46900E06F8F /* PickerViewViewController.swift in Sources */,
 				FA3BB2B22008B46800E06F8F /* Array+Extensions.swift in Sources */,
+				8F6304B62018C3C7008911F6 /* TableViewPickerController.swift in Sources */,
 				FA3BB2BD2008B46900E06F8F /* Locale+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
