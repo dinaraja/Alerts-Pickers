@@ -18,7 +18,7 @@ public struct PickerInfo {
   public var title: String
   public var image: UIImage?
 
-  init(id: String, title: String, image: UIImage? = nil) {
+  public init(id: String, title: String, image: UIImage? = nil) {
     self.id = id
     self.title = title
     self.image = image
