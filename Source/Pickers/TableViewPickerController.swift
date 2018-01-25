@@ -30,7 +30,7 @@ public final class TableViewPickerController: UIViewController {
     static let rowHeight = CGFloat(50)
   }
 
-  public typealias Action = (PickerInfo?) -> Swift.Void
+  public typealias Action = (PickerInfo) -> Swift.Void
 
   public enum Kind {
     case title
