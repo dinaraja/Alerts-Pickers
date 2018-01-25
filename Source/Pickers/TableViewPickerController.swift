@@ -18,7 +18,8 @@ public struct PickerInfo {
   public var title: String
   public var image: UIImage?
 
-  init(title: String, image: UIImage? = nil) {
+  init(id: String, title: String, image: UIImage? = nil) {
+    self.id = id
     self.title = title
     self.image = image
   }
@@ -152,7 +153,7 @@ extension TableViewPickerController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch type {
       case .title:
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self)) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self))!
         dataSource[indexPath.row]
             .config?(cell)
         return cell
