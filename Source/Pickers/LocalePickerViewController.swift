@@ -1,6 +1,6 @@
 import UIKit
 
-extension UIAlertController {
+public extension UIAlertController {
 
     /// Add Locale Picker
     ///
@@ -21,7 +21,7 @@ struct CellData {
     var action: CellConfig?
 }
 
-final class LocalePickerViewController: UIViewController {
+public final class LocalePickerViewController: UIViewController {
     
     // MARK: UI Metrics
     
@@ -102,13 +102,13 @@ final class LocalePickerViewController: UIViewController {
     
     // MARK: Initialize
     
-    required init(type: Kind, action: Action?) {
+    public required init(type: Kind, action: Action?) {
         self.type = type
         self.action = action
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -116,11 +116,11 @@ final class LocalePickerViewController: UIViewController {
         Log("has deinitialized")
     }
     
-    override func loadView() {
+    public override func loadView() {
         view = tableView
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(indicatorView)
@@ -137,12 +137,12 @@ final class LocalePickerViewController: UIViewController {
         updateDataSource()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
     }
     
-    override func viewDidLayoutSubviews() {
+    public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         indicatorView.center = view.center
     }
@@ -242,7 +242,7 @@ final class LocalePickerViewController: UIViewController {
 // MARK: - TableViewDelegate
 
 extension LocalePickerViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dataSource[indexPath.row].action?(tableView.cellForRow(at: indexPath))
     }
 }
@@ -250,15 +250,15 @@ extension LocalePickerViewController: UITableViewDelegate {
 // MARK: - TableViewDataSource
 
 extension LocalePickerViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch type {
         case .country:
             let cell = tableView.dequeueReusableCell(withIdentifier: CountryTableViewCell.identifier) as! CountryTableViewCell
