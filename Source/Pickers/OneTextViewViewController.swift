@@ -1,6 +1,6 @@
 import UIKit
 
-extension UIAlertController {
+public extension UIAlertController {
 
   /// Add a textView
   ///
