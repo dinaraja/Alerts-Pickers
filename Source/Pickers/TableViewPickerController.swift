@@ -81,12 +81,12 @@ public final class TableViewPickerController: UIViewController {
       case .title:
         tableView.register(
             UITableViewCell.self,
-            forCellReuseIdentifier: String(describing: UITableViewCell.self)
+            forCellReuseIdentifier: "TitleCell"
         )
       case .imageAndTitle:
         tableView.register(
-            CountryTableViewCell.self,
-            forCellReuseIdentifier: CountryTableViewCell.identifier
+            UITableViewCell.self,
+            forCellReuseIdentifier: "ImageAndTitleCell"
         )
     }
 
@@ -109,6 +109,9 @@ public final class TableViewPickerController: UIViewController {
     dataSource = pickerInfoArray
         .map { pickerInfo in
       let config: CellConfig = { [unowned self] cell in
+        cell?.backgroundColor = nil
+        cell?.selectionStyle = .none
+        cell?.contentView.backgroundColor = nil
         cell?.textLabel?.text = pickerInfo.title
 
         if self.type == .imageAndTitle {
@@ -151,17 +154,9 @@ extension TableViewPickerController: UITableViewDataSource {
   }
 
   public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    switch type {
-      case .title:
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self))!
-        dataSource[indexPath.row]
-            .config?(cell)
-        return cell
-      case .imageAndTitle:
-        let cell = tableView.dequeueReusableCell(withIdentifier: CountryTableViewCell.identifier) as! CountryTableViewCell
-        dataSource[indexPath.row]
-            .config?(cell)
-        return cell
-    }
+    let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self))!
+    dataSource[indexPath.row]
+        .config?(cell)
+    return cell
   }
 }
