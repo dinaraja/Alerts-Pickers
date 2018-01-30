@@ -154,7 +154,8 @@ extension TableViewPickerController: UITableViewDataSource {
   }
 
   public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self))!
+    let identifier = type == .title ? "TitleCell" : "ImageAndTitleCell"
+    let cell = tableView.dequeueReusableCell(withIdentifier: identifier)!
     dataSource[indexPath.row]
         .config?(cell)
     return cell
