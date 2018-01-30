@@ -81,12 +81,12 @@ public final class TableViewPickerController: UIViewController {
       case .title:
         tableView.register(
             UITableViewCell.self,
-            forCellReuseIdentifier: "TitleCell"
+            forCellReuseIdentifier: String(describing: UITableViewCell.self)
         )
       case .imageAndTitle:
         tableView.register(
-            UITableViewCell.self,
-            forCellReuseIdentifier: "ImageAndTitleCell"
+            CountryTableViewCell.self,
+            forCellReuseIdentifier: CountryTableViewCell.identifier
         )
     }
 
@@ -154,10 +154,17 @@ extension TableViewPickerController: UITableViewDataSource {
   }
 
   public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let identifier = type == .title ? "TitleCell" : "ImageAndTitleCell"
-    let cell = tableView.dequeueReusableCell(withIdentifier: identifier)!
-    dataSource[indexPath.row]
-        .config?(cell)
-    return cell
+    switch type {
+      case .title:
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell.self))!
+        dataSource[indexPath.row]
+            .config?(cell)
+        return cell
+      case .imageAndTitle:
+        let cell = tableView.dequeueReusableCell(withIdentifier: CountryTableViewCell.identifier) as! CountryTableViewCell
+        dataSource[indexPath.row]
+            .config?(cell)
+        return cell
+    }
   }
 }
